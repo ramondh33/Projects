@@ -1,70 +1,68 @@
-#########################################
-#
-# Tic Tac Toe Game Mile Stone Project
-#
-'''
-print intro to game and player chooses O or X
-program then randomly chooses who goes first
-program asks player to enter position
-program places an X or O in that position depending on whos turn it is
-program then asks other player to enter position etc
-when three of the same input match in same line player wins
-program asks players to play again or exit
-'''
-#########################################
+# Tic Tac Toe Game
 
+def intro():
+    print("********** Welcome To Tic Tac Toe! **********")
+    print("   ********** Created by Ramon **********   ")
 
-import random
-# First write player functions returns player 1 and player 2
-def player_input(player):
-    player1 = player.random()
-    print(player1)
+def gameMenu():
+    playerOne = 0
+    playerTwo = 0
+    choice = 0
+    while choice != 2:
+        print("1. Start Game")
+        print("2. Quit Game")
+        try:
+            choice = int(input("What would you like to do? "))
+        except:
+            print("\nInvalid choice. Please try again!\n")
+            continue
 
-    while player1 == None:
-        player1 = input("Please choose 'O' or 'X': ")
-        if player1.upper() == 'O':
-            player2 = 'X'
-        elif player1.upper() == 'X':
-            player2 = 'O'
+        if choice == 1:
+            playerOne = input("Player one please choose X or O: ")
+            playerOne = playerOne.upper()
+
+        if playerOne == "X":
+           playerTwo = "O"
+           break
+        elif playerOne == "O":
+           playerTwo = "X"
+           break
+        
         else:
-            print("Please pick one of the choice characters.")
-            player1 = None
+            print("Thanks for playing!")
+            break
 
-    return player1,player2
+       
 
-# Game board position using list
-board = ['#',' ',' ',' ',' ',' ',' ',' ',' ',' ']
+board = ["1", " ", " "," "," "," "," "," "," "," "]
 
-# Print the game board
-def display_game(board):
-    print('   |   |')
-    print(' ' + board[7] + ' | ' + board[8] + ' | ' + board[9])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[4] + ' | ' + board[5] + ' | ' + board[6])
-    print('   |   |')
-    print('-----------')
-    print('   |   |')
-    print(' ' + board[1] + ' | ' + board[2] + ' | ' + board[3])
-    print('   |   |')
-    print('\n')
-    print("Welcome to my Tic Tac Toe game!")
+def gameBoard(board):
+    print("\n")
+    print("   |   |   ")
+    print(" "+board[1],"| "+board[2],"| "+board[3]," ")
+    print("-------------")
+    print("   |   |   ")
+    print(" "+board[4],"| "+board[5],"| "+board[6]," ")
+    print("-------------")
+    print("   |   |   ")
+    print(" "+board[7],"| "+board[8],"| "+board[9]," ")
+    print("\n")
 
+def position():
+    try:
+        playerPosition = int(input("Enter position: "))
+    except:
+      print("Invalid Input")
 
-
-# Input player position choice
-def player_position(player1,player2):
-    choice = [player1,player2]
-    choice.random()
-    return choice
-
-# Replacing position with corresponding letter
-#def replacement():
-
-player1 = None
-player2 = None
-player = [player1,player2]
-player_input(player)
-display_game(board)
-player_position(player1,player2)
+    for Position in board:
+        board[playerPosition] = "X"
+# Left off at players picking positions then having the program place it on the board and reprinting updated board
+gameMenu()
+while True:
+    gameBoard(board)
+    position()
+#while playerOnePosition == 0:
+#    try:
+ #       playerOnePosition = int(input("Enter a number from 1-9 to choose you position: "))
+  #  except:
+   #     print("Invalid choice")
