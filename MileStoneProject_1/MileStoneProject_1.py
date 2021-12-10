@@ -5,8 +5,6 @@ def intro():
     print("   ********** Created by Ramon **********   ")
 
 def gameMenu():
-    playerOne = 0
-    playerTwo = 0
     choice = 0
     while choice != 2:
         print("1. Start Game")
@@ -16,25 +14,26 @@ def gameMenu():
         except:
             print("\nInvalid choice. Please try again!\n")
             continue
+        if choice == 2:
+            print("\nThanks for playing! Goodbye!")
+            exit()
 
-        if choice == 1:
-            playerOne = input("Player one please choose X or O: ")
-            playerOne = playerOne.upper()
+        return choice
 
-        if playerOne == "X":
-           playerTwo = "O"
-           break
-        elif playerOne == "O":
-           playerTwo = "X"
-           break
-        
-        else:
-            print("Thanks for playing!")
-            break
+def player(choice):
+    playerOne = 0
+    playerTwo = 0
+    playerOne = input("Please choose X or O: ")
 
-       
+    playerOne = playerOne.upper()
 
-board = ["1", " ", " "," "," "," "," "," "," "," "]
+    if playerOne == "X":
+        playerTwo = "O"
+        return playerOne,playerTwo
+
+    elif playerOne == "O":
+        playerTwo = "X"
+        return playerOne,playerTwo
 
 def gameBoard(board):
     print("\n")
@@ -48,21 +47,49 @@ def gameBoard(board):
     print(" "+board[7],"| "+board[8],"| "+board[9]," ")
     print("\n")
 
-def position():
+def position(playerOne):
     try:
         playerPosition = int(input("Enter position: "))
     except:
       print("Invalid Input")
 
     for Position in board:
-        board[playerPosition] = "X"
+
+        if board[playerPosition] != " ":
+            print("Position taken, please choose an empty position!")
+
+        else:
+            board[playerPosition] = playerOne
+            return board
+
+def position(playerTwo):
+    try:
+        playerPosition = int(input("Enter position: "))
+    except:
+      print("Invalid Input")
+
+    for Position in board:
+        board[playerPosition] = playerTwo
+
+    if board[playerPosition] != " ":
+        print("Position taken, please choose an empty position!")
+
+    else:
+        return board
+
 # Left off at players picking positions then having the program place it on the board and reprinting updated board
+choice = 0
+
+board = ["0", " ", " "," "," "," "," "," "," "," "]
+
 gameMenu()
-while True:
-    gameBoard(board)
-    position()
-#while playerOnePosition == 0:
-#    try:
- #       playerOnePosition = int(input("Enter a number from 1-9 to choose you position: "))
-  #  except:
-   #     print("Invalid choice")
+
+gameBoard(board)
+
+
+
+position(playerOne)
+
+position(playerTwo)
+
+gameBoard(board)
