@@ -1,4 +1,0 @@
-﻿  Source.cpp
-F:\C++\atm_youtube\atm_youtube\Source.cpp(9,13): warning C4326: return type of 'main' should be 'int' instead of 'void'
-F:\C++\atm_youtube\atm_youtube\Source.cpp(32): error C4700: uninitialized local variable 'balance1' used
-F:\C++\atm_youtube\atm_youtube\Source.cpp(94): error C4700: uninitialized local variable 'balance2' used
