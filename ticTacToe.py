@@ -1,4 +1,4 @@
-# Tic Tac Toe just testing branches using git command
+# Tic Tac Toe
 import random
 
 #intro
