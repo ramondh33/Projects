@@ -2,4 +2,4 @@
 
 C++ and Python Beginner Projects
 
-These are projects that I do following online courses.
+In here you will find current small projects I am working on. For now it will be just using Python but I will be updating with C++ projects as well.
